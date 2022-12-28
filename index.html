@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body></body>
+  <body>
+    <form class="form" id="form">
+      <h1>Real-time Character Counter</h1>
+      <input
+        type="textarea"
+        class="input"
+        id="textarea"
+        placeholder="Enter here"
+        autofocus
+        autocomplete="off"
+      />
+      <div class="counter" id="counter">
+        <span class="totalchar" id="totalchar">Total Characters: 0</span>
+        <span class="remaining" id="remaining">Remaining: 0</span>
+      </div>
+    </form>
+  </body>
   <script src="index.js"></script>
 </html>
