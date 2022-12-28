@@ -1,26 +1,21 @@
+const myformEl = document.getElementById("myform");
 const textareaEl = document.getElementById("textarea");
 const totalcharEl = document.getElementById("totalchar");
-const remainingEl = document.getElementById("remaining");
+const remainEl = document.getElementById("remain");
 
-totalcharEl.innerText = `Total Characters: ${chars}`;
-remainingEl.innerText = `Remaining: ${remain}?`;
+//let currchars = JSON.parse(localStorage.getItem("chars"));
+//there was no need to use storage because i wasn't submitting the page
 
-let score = JSON.parse(localStorage.getItem("chars"));
-if (!chars) {
-  chars = 0;
-}
-
-formEl.addEventListener("keypress", (event) => {
-  const userAns = +inputEl.value;
-  if (userAns == correctAns) {
-    score++;
-    updateLocalStorage();
-  } else {
-    score--;
-    updateLocalStorage();
-  }
+/*he used keyup instead of keydown*/
+textareaEl.addEventListener("keyup", () => {
+  const chars = textareaEl.value.length;
+  const remain = textareaEl.getAttribute("maxLength") - chars;
+  updateText(chars, remain);
+  //  localStorage.setItem("chars", JSON.stringify(chars));
+  //there was no need to use storage because i wasn't submitting the page
 });
 
-function updateLocalStorage() {
-  localStorage.setItem("chars", JSON.stringify(chars));
+function updateText(chars, remain) {
+  totalcharEl.innerText = `Total Characters: ${chars}`;
+  remainEl.innerText = `Remaining: ${remain}`;
 }
